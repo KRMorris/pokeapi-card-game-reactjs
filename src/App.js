@@ -21,7 +21,9 @@ function App() {
         <button className="">Guest</button>
       </nav>
       <hr className=""></hr>
-      <PokeList />
+      <div className="main-container">
+        <PokeList />
+      </div>
     </div>
   );
 }
