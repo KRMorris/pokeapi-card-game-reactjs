@@ -12,6 +12,7 @@ class PokeList extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
+            mIsLoaded: false,
             pokeNames: [],
             namesSelection: [],
             cardDet: [],
@@ -103,6 +104,7 @@ class PokeList extends React.Component {
         fetch(url)
             .then(res => res.json())
             .then((result) => {
+
                 //extract moves
                 for (let y = 0; y < result.moves.length; y++) {
                     //mv.push(result.moves[y].move.name);
@@ -141,9 +143,11 @@ class PokeList extends React.Component {
                 if (ftype === 'details') {
                     console.log('---');
                     this.setState({ cardDet: pokeInfo });
+                    this.props = pokeInfo;
                 } else {
                     window.localStorage.setItem(result.name, JSON.stringify(pokeInfo));
                 }
+                //this.setState({ mIsLoaded: true });
 
             },
                 (error) => {
@@ -151,8 +155,15 @@ class PokeList extends React.Component {
                 }
             )
     }
+    checkLoa = () => {
+        this.setState({ mIsLoaded: true });
+        console.log("---");
+    }
     hideModal = () => {
-        this.setState({ showM: false });
+        this.setState({
+            showM: false, mIsLoaded: false,
+            cardDet: {}
+        });
     }
 
     render() {
@@ -163,6 +174,7 @@ class PokeList extends React.Component {
         } else if (!isLoaded) {
             return <div>Loading.....</div>;
         } else {
+            let { cardDet } = this.state
 
             return (
 
@@ -197,13 +209,18 @@ class PokeList extends React.Component {
 
                     </div>
                     <div style={{ display: this.state.showM ? "" : "none" }}>
-                        <Modal
-                            name={this.state.cardDet.name} xp={this.state.cardDet.experience}
-                            hp={this.state.cardDet.hp} img={this.state.cardDet.image}
-                            attack={this.state.cardDet.attack} defense={this.state.cardDet.defense}
-                            sattack={this.state.cardDet.sAttack} sdefense={this.state.cardDet.sDefense}
-                            speed={this.state.cardDet.speed} moves={this.state.cardDet.moves}
-                            abilities={this.state.cardDet.abilities} handleClose={this.hideModal} />
+                        <img style={{ display: 'none' }} src={this.state.cardDet.image} onLoad={this.checkLoa} />
+
+                        {this.state.mIsLoaded ?
+                            <Modal
+                                cardStyle={'details-card'}
+                                name={this.state.cardDet.name} xp={this.state.cardDet.experience}
+                                hp={this.state.cardDet.hp} img={this.state.cardDet.image}
+                                attack={this.state.cardDet.attack} defense={this.state.cardDet.defense}
+                                sattack={this.state.cardDet.sAttack} sdefense={this.state.cardDet.sDefense}
+                                speed={this.state.cardDet.speed} moves={this.state.cardDet.moves}
+                                abilities={this.state.cardDet.abilities} handleClose={this.hideModal} loading={false} />
+                            : <Modal loading={true} />}
                     </div>
                 </div>
             );
