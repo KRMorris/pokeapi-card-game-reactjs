@@ -11,6 +11,13 @@
     padding-left: 4px;
     width: 100%;
   }
+.col6{
+  float: left;
+  width: 50%;
+}
+.col7{
+  width: 51%;
+}
 .details{
   width: 90%;
   /*width: 350px;*/
@@ -28,6 +35,47 @@
 .card-headpd{
   padding-bottom: 15px;
 }
+.sControlsCont{
+  display: flex;
+  position: sticky;
+  top: 1%;
+  margin-left: auto;
+  width: 198px;
+  height: 66px;
+  background: rgba(196, 196, 196, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.sButton{
+  position: relative;
+  top: 18.18%;
+  bottom: 18.18%;
+  width: 91px;
+  height: 42px;
+  color: #FFFFFF;
+}
+.attackBtn{
+  background: rgba(52, 102, 175, 0.3);
+  border-color: rgba(52, 102, 175, 0.3);
+  border-radius: 6px;
+  /*filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+}
+.attackActivate{
+  background: rgba(52, 102, 175, 0.7) !important;
+  border-color: rgba(52, 102, 175, 0.7) !important;
+ 
+}
+.cancelBtn{
+  background: rgba(175, 52, 52, 0.3);
+  border-color: rgba(175, 52, 52, 0.3);
+  border-radius: 6px;
+}
+.cancelBtnActivate{
+  background: rgba(175, 52, 52, 0.7) !important;
+  border-color: rgba(175, 52, 52, 0.7) !important;
+}
+
 /*Small Tablet*/
 @media only screen and (min-width:500px) and
 (max-width:599px){
@@ -55,6 +103,18 @@
     line-height: 39px;
     font-variant: all-petite-caps;
   }
+  .sControlsCont{
+    display: flex;
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    width: 198px;
+    height: 66px;
+    background: rgba(196, 196, 196, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+  }
+  
 }
 /*Large Tablet - Desktop*/
 @media only screen and (min-width:764px) and
