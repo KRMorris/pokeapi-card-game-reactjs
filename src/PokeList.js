@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
+import Services from './services';
 
 
 class PokeList extends React.Component {
@@ -57,18 +58,19 @@ class PokeList extends React.Component {
                 this.setState({ isSelected: p.name, card_id: p.name });//this.namesSelection);
 
                 this.pn.push(p.url);
-
+                console.log(this.pn)
             } else {
                 this.setState({ isSelected: false });
                 //check if url already in array and remove
                 for (let check of this.pn) {
                     if (p.url === check) {
                         //remove unselected url
-                        this.pn = this.pn.filter(val => val !== p.url);
+                        //this.pn = this.pn.filter(val => val !== p.url);
+                        this.pn = Services.remUnselected(this.pn, p.url);
                     }
                     //   console.log(this.pn)
                 }
-
+                console.log(this.pn)
             }
 
         }

@@ -1,10 +1,12 @@
 import React from "react";
-
+import styles from "./Deck.module.css"
 class PokemonCard extends React.Component {
+
     render() {
         console.log('pokecar')
+        /*{this.props.isSel ? this.props.cardStyleA : this.props.cardStyle}*/
         return (
-            <div className={this.props.cardStyle}>
+            <div className={this.props.isSel ? this.props.cardStyleA : this.props.cardStyle}>
                 <div className="card-head-pd">
                     <div className="card-head">
                         <div>
